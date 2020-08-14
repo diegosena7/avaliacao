@@ -18,7 +18,7 @@ public class TurmaEntity {
 
     @ManyToOne
     @JoinColumn(name = "ID_CURSO")
-    private CursoEntity curso;
+    private CursoEntity<O> curso;
 
     @Column(name = "DT_INICIO")
     private Date dtInicio;

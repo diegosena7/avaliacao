@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "TB_CURSO")
 @Data
-public class CursoEntity {
+public class CursoEntity<O> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

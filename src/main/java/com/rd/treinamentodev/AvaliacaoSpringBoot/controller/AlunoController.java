@@ -15,7 +15,7 @@ public class AlunoController {
     private AlunoService alunoService;
 
     @PostMapping("/aluno")
-    public ResponseEntity gravar(@RequestBody AlunoDTO alunoDTO){
+    public ResponseEntity gravar(@RequestBody AlunoDTO alunoDTO) throws Exception {
         return alunoService.gravar(alunoDTO);
     }
 }

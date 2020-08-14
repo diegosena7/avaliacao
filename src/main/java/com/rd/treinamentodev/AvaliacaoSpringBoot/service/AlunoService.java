@@ -15,19 +15,21 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
+//    @Autowired
+//    private AlunoDTO dto;
 
-    public ResponseEntity gravar(AlunoDTO alunoDTO){
+
+    public ResponseEntity gravar(AlunoDTO alunoDTO) throws Exception{
         AlunoEntity entity = new AlunoEntity();
         entity.setNomeAluno(alunoDTO.getNome());
         entity.setCpf(alunoDTO.getCpf());
 
         //TODO validar se o CPF existe no banco antes de existir, caso exista retornar mensagem de erro
 
-
-
-
+        if (entity.getCpf() == alunoDTO.getCpf()){
+            throw new Exception("Atenção, o CPF informado já está cadastrado no sistema!");
+        }
         entity = alunoRepository.save(entity);
-
         ResultData resultData = new ResultData(HttpStatus.CREATED.value(), "Aluno cadastrado com sucesso", entity.getIdAluno());
         return ResponseEntity.status(HttpStatus.CREATED).body(resultData);
     }
